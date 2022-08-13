@@ -16,7 +16,7 @@ public class AddressBook {
         do {
             System.out.println("Choose Operation you want to do");
             System.out
-                    .println("1. Add\n 2. Edit \n 3. Back");
+                    .println("1. Add\n 2. Edit \n 3.Delete \n 4. Back");
             switch (s.nextInt()) {
                 case 1:
                     add();
@@ -25,6 +25,9 @@ public class AddressBook {
                     edit();
                     break;
                 case 3:
+                    delete();
+                    break;
+                case 4:
                     status = false;
                     break;
             }
@@ -101,5 +104,18 @@ public class AddressBook {
             }
         }
 
+    }
+    public void delete() {
+        System.out.println("Enter your First name:");
+        String fname = s.next();
+
+        Iterator<Person> iterator = list.listIterator();
+        while (iterator.hasNext()) {
+            Person person = iterator.next();
+
+            if (fname.equals(person.getFname())) {
+                list.remove(person);
+            }
+        }
     }
 }
